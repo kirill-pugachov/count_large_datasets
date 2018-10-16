@@ -14,12 +14,12 @@ import pandas as pd
 #import numpy as np
 
 
-COMISSION = 0.002
-CURRENCY = 'USD'
-PATH_TO_DIRECTORY_DEALS = 'C:\\Users\\tom\\usd_input_output_operation\\Data\Deals_april_2018'
-PATH_TO_DIRECTORY_RESULT = 'C:\\Users\\tom\\usd_input_output_operation\\Result\\Deals_in_USD'
-PARTS_SIZE = 200000000
-RESULT_FILE_NAME = 'currency_to_USD_rates_april_2018_new_version.csv'
+COMISSION = ------
+CURRENCY = '-----'
+PATH_TO_DIRECTORY_DEALS = '--------------------'
+PATH_TO_DIRECTORY_RESULT = '-------------------'
+PARTS_SIZE = -------------
+RESULT_FILE_NAME = '--------------------'
 
 outcome_list = [
     'dt',
@@ -197,8 +197,7 @@ def build_pair(curr, pair_price_from_deals, curr_deals):
 
 def build_pair_path(curr_pair_to_count_rate, pair_price_from_deals, curr_deals):
     '''
-    Строим валютные связки (пары валют вида ['DOGE_BTC', 'BTC_USD'])
-    для расчета курса 'DOGE_USD' через промежуточную валюту
+    Строим валютные связки  для расчета курса через промежуточную валюту
     '''
     res_dict = dict()
     for pair in curr_pair_to_count_rate:
@@ -322,8 +321,8 @@ def get_quantity_in_USD(raw):
     Пересчитываем кол-во валюты №2 сделки
     в USD по курсу данного часа сделки
     '''
-    if raw['curr1'] != 'USD':
-        pair = raw['curr1'] + '_' + 'USD'
+    if raw['curr1'] != CURRENCY:
+        pair = raw['curr1'] + '_' + CURRENCY
         rate = get_rate_by_pair_timestamp(pair, raw['timestamp'])
     #    rate = pair_curr_rate_by_hours[pair][raw['timestamp']]
         quantity = raw['quantity'] * rate
